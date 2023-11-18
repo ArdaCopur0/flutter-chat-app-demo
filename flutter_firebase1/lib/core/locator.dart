@@ -11,11 +11,11 @@ GetIt getIt = GetIt.instance;
 
 
 setupLocators(){
-getIt.registerLazySingleton(() => ChatService()); //firestoredb'yi initalize ettik, ne zaman ihtiyacımız olursa döner
+getIt.registerLazySingleton(() => ChatService()); 
 getIt.registerLazySingleton(() => AuthService());
 
 getIt.registerFactory(() => ChatsModel());
-getIt.registerFactory(() => SignInModel());  //chatsmodel factory classını tanımladık
+getIt.registerFactory(() => SignInModel());  
 getIt.registerFactory(() => MainModel());
 getIt.registerFactory(() => ContactsModel());
 }
