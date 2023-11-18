@@ -21,6 +21,6 @@ class MainModel extends BaseModel {
 
   Future<void> navigateToContacts() async {
     
-    //return navigatorService.navigateTo( ContactsPage());   //devam edilecek
+    //return navigatorService.navigateTo( ContactsPage());   
   }
 }
