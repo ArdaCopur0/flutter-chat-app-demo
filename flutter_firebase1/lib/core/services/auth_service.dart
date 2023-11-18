@@ -5,7 +5,7 @@ class AuthService {
 
 
   Future<User?>signIn() async {
-    var user = await _auth.signInAnonymously();  //simdilik anonymous
+    var user = await _auth.signInAnonymously();  
 
     return user.user;
   }
