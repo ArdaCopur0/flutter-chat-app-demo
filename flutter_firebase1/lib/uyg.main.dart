@@ -51,11 +51,11 @@ class _UygMainState extends State<UygMain> with SingleTickerProviderStateMixin {
       body: Container(
         color: Theme.of(context).primaryColor,
         child: SafeArea(
-          child: NestedScrollView( //birbirine baglı widgetları beraber kaydırma
+          child: NestedScrollView( 
             headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
               return [
                 SliverAppBar(
-                  floating: true,    //aşağı kaydırırken  kaybolmaması 
+                  floating: true,    
                   title: Text("bitirmeProje"),
                   actions: <Widget>[
                     IconButton(
@@ -106,7 +106,7 @@ class _UygMainState extends State<UygMain> with SingleTickerProviderStateMixin {
       floatingActionButton: _showMessage ? FloatingActionButton(
         child: Icon(Icons.message, color: Colors.white,),
         onPressed: () async { 
-          await model.navigateToContacts();  //kişilere git
+          await model.navigateToContacts();  
         },
       )
        : null,
