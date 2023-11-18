@@ -25,12 +25,12 @@ class SignInPage extends StatelessWidget {
             children: <Widget>[
             Text("Kullanıcı Adı"),
             TextField(
-              controller: _editingController, //sign in methoduna gönderecek
+              controller: _editingController, 
             ),
             // ignore: deprecated_member_use
             RaisedButton(
               splashColor: Colors.deepPurpleAccent,
-              child: Text("Giriş Yap"), onPressed: () async => await model.signIn(_editingController.text),  //kullanıcı username tanımlasın
+              child: Text("Giriş Yap"), onPressed: () async => await model.signIn(_editingController.text), 
               )
           ],
           ),  
