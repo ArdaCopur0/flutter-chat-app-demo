@@ -20,9 +20,9 @@ import 'package:flutter_firebase1/uyg.main.dart';
 
 void main() async{
 
-  setupLocators(); // get_it paketinden servis classlarını initialize et
+  setupLocators(); 
 
-  WidgetsFlutterBinding.ensureInitialized();  //native code 
+  WidgetsFlutterBinding.ensureInitialized();  
   await Firebase.initializeApp();
   runApp(MyApp());
 }
