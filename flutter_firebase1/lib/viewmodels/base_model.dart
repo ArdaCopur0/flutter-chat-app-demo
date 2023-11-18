@@ -9,6 +9,6 @@ abstract class BaseModel with ChangeNotifier {
   set busy(bool state) {
     _busy = state;
 
-    notifyListeners();  //busy degisince cagir
+    notifyListeners();  
   }
 }
