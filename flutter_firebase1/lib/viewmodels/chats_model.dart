@@ -7,7 +7,7 @@ import 'package:flutter_firebase1/viewmodels/base_model.dart';
 import 'package:get_it/get_it.dart';
 
 class ChatsModel extends BaseModel {
-  final ChatService _db = GetIt.instance<ChatService>(); //firestore cekme
+  final ChatService _db = GetIt.instance<ChatService>(); 
 
   Stream<List<Conversation>> conversations (String userId) {
     return _db.getConversations(userId);
