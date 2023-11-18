@@ -8,20 +8,20 @@ final AuthService _authService = getIt<AuthService>();  //service
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 Future<void> signIn(String userName) async {
-  if(userName.isEmpty) return; //username boşsa
+  if(userName.isEmpty) return; 
   
-  busy = true; //loading bari gostersin
+  busy = true; 
 
 try {
-  var user = await _authService.signIn();  //sign in butonuna basınca islem 
+  var user = await _authService.signIn();  
 
  await  _firestore.collection("profil").doc(user!.uid).set({
     "userName": userName,
     "image" : "https://placekitten.com/200/200"
   });
 } catch (e) {
-  busy = false;  //sistem cökmemesi icin 
+  busy = false;  
 }
-  busy = false; //loading islemi yok
+  busy = false; 
 }  
 }
