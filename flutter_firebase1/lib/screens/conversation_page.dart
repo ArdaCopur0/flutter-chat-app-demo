@@ -16,7 +16,7 @@ class ConversationPage extends StatefulWidget {
 
 class _ConversationPageState extends State<ConversationPage> {
   // ignore: unused_field
-  final TextEditingController _editingController = TextEditingController();  //mesajları almak için, text field'a bu parametre ekle
+  final TextEditingController _editingController = TextEditingController();  
   
   // ignore: unused_field
   late CollectionReference _ref; 
@@ -77,26 +77,26 @@ class _ConversationPageState extends State<ConversationPage> {
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage("https://placekitten.com/600/800"))),       //geçici 
+            image: NetworkImage("https://placekitten.com/600/800"))),       
          child: Column(
            children: <Widget>[
              Expanded(
                child: StreamBuilder(  //sayısına göre anlık mesaj gözükmesi
-                 stream: _ref.orderBy("timeStamp").snapshots(),  //son mesajın en alta düşmesi
+                 stream: _ref.orderBy("timeStamp").snapshots(),  
                  builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                    return !snapshot.hasData
                    ? CircularProgressIndicator()
                    : ListView(                  
                     children: snapshot.data!.docs.map((document)=>ListTile(
                       title: Align(
-                        alignment: widget.userId   != document["senderId"]    //eşitse mesajı sağa , değilse sola yasla  
+                        alignment: widget.userId   != document["senderId"]    
                          ? Alignment.centerLeft
                          : Alignment.centerRight,
                          child: Container(
                           padding: EdgeInsets.all(8), //mesaj background
                           decoration: BoxDecoration
                           (color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.horizontal(  //mesaj blogunu sekillendirme
+                          borderRadius: BorderRadius.horizontal(  
                           left: Radius.circular(10),  
                           right: Radius.circular(10))),
                           child: Text(
@@ -163,11 +163,11 @@ class _ConversationPageState extends State<ConversationPage> {
                   icon: Icon(Icons.send, color: Colors.white,),
                   onPressed: () async{
                     await _ref.add({
-                      "senderId": widget.userId, //mesajı gönderenin userID sinin alınması
+                      "senderId": widget.userId, 
                       "message": _editingController.text,
                       "timeStamp": DateTime.now()   
                     });
-                    _editingController.text = "";    //gönderilen mesajın kaydedilmesi
+                    _editingController.text = "";    
                   },
                 ),
               )
