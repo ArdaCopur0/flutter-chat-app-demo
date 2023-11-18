@@ -17,40 +17,40 @@ import 'package:flutter_firebase1/core/services/chat_service.dart';
 
 
 class ChatPage extends StatelessWidget {
-  final String userId = "TwVfwZVC2zYv20OCwoYJkajndM72"; //aktif kullanıcı ıd
+  final String userId = "TwVfwZVC2zYv20OCwoYJkajndM72";
   const ChatPage({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-   var model = GetIt.instance<ChatsModel>();      //servis locaterdan modelı cagirma
+   var model = GetIt.instance<ChatsModel>();      
    
     // ignore: avoid_function_literals_in_foreach_calls, avoid_print
     
       //mesajlari cekme , stream
     return ChangeNotifierProvider(
-      create: (BuildContext context) => model, //chat ekranı kayboldugunda model de dispose
+      create: (BuildContext context) => model, 
       child: StreamBuilder<List<Conversation>>(
-        stream: model.conversations(userId),  //arrayden kullanıcıları(members) userId ile filtreledik
+        stream: model.conversations(userId),  
         builder:
          (BuildContext context, AsyncSnapshot<List<Conversation>> snapshot) {
-          if (snapshot.hasError){   //tablar arası geçişte hata verirse
+          if (snapshot.hasError){   
     
-            return Text("Error:  ${snapshot.error}");  //direk hata verirse
+            return Text("Error:  ${snapshot.error}"); 
           }
     
-          if(snapshot.connectionState == ConnectionState.waiting) {  //geç yükleniyosa  anlık hata ver
+          if(snapshot.connectionState == ConnectionState.waiting) { 
             return Text("Loading..");
           }
           return ListView(
             children: snapshot.data!.map((doc) => ListTile(
               leading: CircleAvatar(  
-                backgroundImage: NetworkImage(doc.profileImage),  //geçici 
+                backgroundImage: NetworkImage(doc.profileImage),  
               ),
               title: Text(doc.name),
               subtitle: Text(doc.displayMessage),
               trailing: Column(
                 // ignore: prefer_const_literals_to_create_immutables
-                children: <Widget>[  //mesaj zamanı geçici
+                children: <Widget>[  
                   Text("19.30"),   
                   Container(  
                     width: 20,
@@ -71,7 +71,7 @@ class ChatPage extends StatelessWidget {
                 ],
               ),
               onTap: () {
-                Navigator.push(          //chatten conversationa geçiş
+                Navigator.push(          
                   context, MaterialPageRoute(builder:(content) => ConversationPage(userId: userId,
                    conversationId: doc.id,) ));
               },
